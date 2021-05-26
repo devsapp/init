@@ -1,0 +1,20 @@
+edition: 1.0.0
+name: static-site
+vars:
+  sourceCode: ${path(.)} #源码地址
+services:
+  static-site:
+    component: static-site
+    actions:
+      # pre-deploy:
+      #   - run: npm i
+      #     path: ${vars.sourceCode}
+    props:
+      sourceCode: ${vars.sourceCode} # 指定构建的源码目录，如果已经构建好静态文件可以注释掉
+      targetStaticDir: ${vars.sourceCode}/build # 指定发布的静态资源，一般由开发脚手架经过npm run build 构建出来
+      service: {{website}}  # 函数计算的服务名称
+      function: {{website}} # 函数计算的函数名称
+      # port: 1111 
+      # initializationTimeout: 60
+      # memorySize: 512
+      # timeout: 60

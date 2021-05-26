@@ -1,0 +1,10 @@
+Type: Component
+Name: init
+Provider:
+  - 其它
+Version: 0.0.7
+Description: 初始化component模板
+HomePage: https://www.serverless-devs.com
+Tags: #标签详情
+  - 模板
+Category: 其它
