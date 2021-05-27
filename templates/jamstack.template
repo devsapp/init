@@ -1,18 +1,15 @@
 edition: 1.0.0
-name: jamstack-website
+name: {{appName}}-website
 vars:
   domain: {{domain}}
+  {{appName}}SouceCode: {{appName}}
 services:
-  # api: 
-  #   component: fc-api
-  #   props:
-  #     sourceCode: ${apiSource}
   website:
     component: jamstack
     # actions:
     #   pre-deploy:
     #     - run: npm i
-    #       path: ${path(.)}/{{appName}}
+    #       path: ${vars.{{appName}}SouceCode}
     props:
       domain: ${vars.domain}
       favicon: false
@@ -20,18 +17,17 @@ services:
       apps:
         - name: {{appName}}
           type: jamstack
-          sourceCode: ${path(.)}/{{appName}}
+          sourceCode: ${vars.{{appName}}SouceCode}
           paths:
             - /
             - /~{{appName}}
           indexFile: index.html
           page404Url:  404.html
-        # - name: backendapi
+        # - name: <your apiName>
         #   type: backend
         #   paths:
-        #     - /~httpbin
-        #   proxyUrl: http://httpbin.org/
-        
+        #     - /~api
+        #   proxyUrl: ${<your apiName>.output[0].customDomains[0].domainName}
 
 
      

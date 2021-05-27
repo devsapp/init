@@ -56,7 +56,7 @@
 					}
 				},
 				{
-					"id": 32,
+					"id": 40,
 					"name": "client",
 					"kind": 1024,
 					"kindString": "Property",
@@ -80,7 +80,7 @@
 					}
 				},
 				{
-					"id": 33,
+					"id": 41,
 					"name": "inputs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -97,7 +97,7 @@
 					}
 				},
 				{
-					"id": 36,
+					"id": 44,
 					"name": "__doc",
 					"kind": 2048,
 					"kindString": "Method",
@@ -111,14 +111,14 @@
 					],
 					"signatures": [
 						{
-							"id": 37,
+							"id": 45,
 							"name": "__doc",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 38,
+									"id": 46,
 									"name": "projectName",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -147,7 +147,7 @@
 					}
 				},
 				{
-					"id": 34,
+					"id": 42,
 					"name": "__getBasePath",
 					"kind": 2048,
 					"kindString": "Method",
@@ -161,7 +161,7 @@
 					],
 					"signatures": [
 						{
-							"id": 35,
+							"id": 43,
 							"name": "__getBasePath",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -183,7 +183,113 @@
 				},
 				{
 					"id": 30,
-					"name": "cicd",
+					"name": "addService",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPrivate": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 116,
+							"character": 20
+						}
+					],
+					"signatures": [
+						{
+							"id": 31,
+							"name": "addService",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 32,
+									"name": "originTree",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 33,
+									"name": "newNode",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						}
+					]
+				},
+				{
+					"id": 34,
+					"name": "addVariable",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPrivate": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 125,
+							"character": 21
+						}
+					],
+					"signatures": [
+						{
+							"id": 35,
+							"name": "addVariable",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 36,
+									"name": "originTree",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								},
+								{
+									"id": 37,
+									"name": "newNode",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "any"
+							}
+						}
+					]
+				},
+				{
+					"id": 38,
+					"name": "api",
 					"kind": 2048,
 					"kindString": "Method",
 					"flags": {
@@ -192,17 +298,21 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 107,
-							"character": 19
+							"line": 139,
+							"character": 18
 						}
 					],
 					"signatures": [
 						{
-							"id": 31,
-							"name": "cicd",
+							"id": 39,
+							"name": "api",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "初始化|增加api配置",
+								"returns": "\n"
+							},
 							"type": {
 								"type": "reference",
 								"typeArguments": [
@@ -217,7 +327,46 @@
 					]
 				},
 				{
-					"id": 17,
+					"id": 28,
+					"name": "cicd",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 105,
+							"character": 19
+						}
+					],
+					"signatures": [
+						{
+							"id": 29,
+							"name": "cicd",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"comment": {
+								"shortText": "初始化 cicd配置文件",
+								"returns": "\n"
+							},
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
+					"id": 12,
 					"name": "createS",
 					"kind": 2048,
 					"kindString": "Method",
@@ -227,20 +376,20 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 40,
+							"line": 42,
 							"character": 17
 						}
 					],
 					"signatures": [
 						{
-							"id": 18,
+							"id": 13,
 							"name": "createS",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 19,
+									"id": 14,
 									"name": "sPath",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -251,7 +400,7 @@
 									}
 								},
 								{
-									"id": 20,
+									"id": 15,
 									"name": "templateName",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -262,7 +411,7 @@
 									}
 								},
 								{
-									"id": 21,
+									"id": 16,
 									"name": "replaceData",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -281,7 +430,7 @@
 					]
 				},
 				{
-					"id": 22,
+					"id": 24,
 					"name": "index",
 					"kind": 2048,
 					"kindString": "Method",
@@ -291,17 +440,21 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 47,
+							"line": 69,
 							"character": 20
 						}
 					],
 					"signatures": [
 						{
-							"id": 23,
+							"id": 25,
 							"name": "index",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "初始化站点默认是静态站点",
+								"returns": "\n"
+							},
 							"type": {
 								"type": "reference",
 								"typeArguments": [
@@ -316,7 +469,82 @@
 					]
 				},
 				{
-					"id": 28,
+					"id": 17,
+					"name": "init",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPrivate": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 48,
+							"character": 20
+						}
+					],
+					"signatures": [
+						{
+							"id": 18,
+							"name": "init",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reflection",
+										"declaration": {
+											"id": 19,
+											"name": "__type",
+											"kind": 65536,
+											"kindString": "Type literal",
+											"flags": {},
+											"children": [
+												{
+													"id": 20,
+													"name": "appName",
+													"kind": 1024,
+													"kindString": "Property",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "any"
+													}
+												},
+												{
+													"id": 21,
+													"name": "domain",
+													"kind": 1024,
+													"kindString": "Property",
+													"flags": {},
+													"type": {
+														"type": "intrinsic",
+														"name": "string"
+													}
+												}
+											],
+											"groups": [
+												{
+													"title": "Properties",
+													"kind": 1024,
+													"children": [
+														20,
+														21
+													]
+												}
+											]
+										}
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
+					"id": 22,
 					"name": "initGitHub",
 					"kind": 2048,
 					"kindString": "Method",
@@ -326,13 +554,13 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 100,
+							"line": 57,
 							"character": 20
 						}
 					],
 					"signatures": [
 						{
-							"id": 29,
+							"id": 23,
 							"name": "initGitHub",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -345,42 +573,7 @@
 					]
 				},
 				{
-					"id": 26,
-					"name": "jamstack",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPublic": true
-					},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 71,
-							"character": 23
-						}
-					],
-					"signatures": [
-						{
-							"id": 27,
-							"name": "jamstack",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"type": {
-								"type": "reference",
-								"typeArguments": [
-									{
-										"type": "intrinsic",
-										"name": "any"
-									}
-								],
-								"name": "Promise"
-							}
-						}
-					]
-				},
-				{
-					"id": 13,
+					"id": 8,
 					"name": "replaceFun",
 					"kind": 2048,
 					"kindString": "Method",
@@ -390,20 +583,20 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 24,
+							"line": 26,
 							"character": 20
 						}
 					],
 					"signatures": [
 						{
-							"id": 14,
+							"id": 9,
 							"name": "replaceFun",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 15,
+									"id": 10,
 									"name": "str",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -414,7 +607,7 @@
 									}
 								},
 								{
-									"id": 16,
+									"id": 11,
 									"name": "obj",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -433,7 +626,7 @@
 					]
 				},
 				{
-					"id": 24,
+					"id": 26,
 					"name": "staticSite",
 					"kind": 2048,
 					"kindString": "Method",
@@ -443,17 +636,21 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 50,
+							"line": 78,
 							"character": 25
 						}
 					],
 					"signatures": [
 						{
-							"id": 25,
+							"id": 27,
 							"name": "staticSite",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
+							"comment": {
+								"shortText": "初始化静态站点服务",
+								"returns": "\n"
+							},
 							"type": {
 								"type": "reference",
 								"typeArguments": [
@@ -469,23 +666,23 @@
 				},
 				{
 					"id": 5,
-					"name": "test",
+					"name": "trim",
 					"kind": 2048,
 					"kindString": "Method",
 					"flags": {
-						"isPublic": true
+						"isPrivate": true
 					},
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 17,
-							"character": 19
+							"line": 23,
+							"character": 14
 						}
 					],
 					"signatures": [
 						{
 							"id": 6,
-							"name": "test",
+							"name": "trim",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
@@ -496,84 +693,6 @@
 							"parameters": [
 								{
 									"id": 7,
-									"name": "inputs",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {},
-									"comment": {},
-									"type": {
-										"type": "reference",
-										"name": "InputProps"
-									}
-								}
-							],
-							"type": {
-								"type": "reference",
-								"typeArguments": [
-									{
-										"type": "reflection",
-										"declaration": {
-											"id": 8,
-											"name": "__type",
-											"kind": 65536,
-											"kindString": "Type literal",
-											"flags": {},
-											"children": [
-												{
-													"id": 9,
-													"name": "hello",
-													"kind": 1024,
-													"kindString": "Property",
-													"flags": {},
-													"type": {
-														"type": "intrinsic",
-														"name": "string"
-													},
-													"defaultValue": "'hanxie'"
-												}
-											],
-											"groups": [
-												{
-													"title": "Properties",
-													"kind": 1024,
-													"children": [
-														9
-													]
-												}
-											]
-										}
-									}
-								],
-								"name": "Promise"
-							}
-						}
-					]
-				},
-				{
-					"id": 10,
-					"name": "trim",
-					"kind": 2048,
-					"kindString": "Method",
-					"flags": {
-						"isPrivate": true
-					},
-					"sources": [
-						{
-							"fileName": "index.ts",
-							"line": 21,
-							"character": 14
-						}
-					],
-					"signatures": [
-						{
-							"id": 11,
-							"name": "trim",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {},
-							"parameters": [
-								{
-									"id": 12,
 									"name": "str",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -604,32 +723,34 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						32,
-						33
+						40,
+						41
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						36,
-						34,
+						44,
+						42,
 						30,
+						34,
+						38,
+						28,
+						12,
+						24,
 						17,
 						22,
-						28,
+						8,
 						26,
-						13,
-						24,
-						5,
-						10
+						5
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 8,
+					"line": 10,
 					"character": 34
 				}
 			],

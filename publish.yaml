@@ -2,7 +2,7 @@ Type: Component
 Name: init
 Provider:
   - 其它
-Version: 0.0.7
+Version: 0.0.13
 Description: 初始化component模板
 HomePage: https://www.serverless-devs.com
 Tags: #标签详情
