@@ -4,6 +4,7 @@ import inquirer from 'inquirer';
 import { parseDocument, createNode } from 'yaml'
 import { Pair } from 'yaml/types'
 import BaseComponent from './common/base';
+import * as core from '@serverless-devs/core';
 // import logger from './common/logger';
 // import { InputProps } from './common/entity';
 
@@ -54,16 +55,16 @@ export default class ComponentDemo extends BaseComponent {
     return { appName, domain };
   }
 
-  private initGitHub() {
-    let sTemplateContent = fs.readFileSync(path.join(__dirname, '..', 'templates/github.action.template'), 'utf-8');
-    const gitActionFile = path.join(process.cwd(), '.github/workflows/registry-push.yml');
-    fs.ensureFileSync(gitActionFile)
-    fs.writeFileSync(gitActionFile, sTemplateContent, 'utf8');
-  }
+  // private initGitHub() {
+  //   let sTemplateContent = fs.readFileSync(path.join(__dirname, '..', 'templates/github.action.template'), 'utf-8');
+  //   const gitActionFile = path.join(process.cwd(), '.github/workflows/registry-push.yml');
+  //   fs.ensureFileSync(gitActionFile)
+  //   fs.writeFileSync(gitActionFile, sTemplateContent, 'utf8');
+  // }
 
   /**
    * 初始化站点默认是静态站点
-   * @param 
+   * @param
    * @returns
    */
   public async index() {
@@ -72,7 +73,7 @@ export default class ComponentDemo extends BaseComponent {
 
   /**
    * 初始化静态站点服务
-   * @param 
+   * @param
    * @returns
    */
   public async staticSite() {
@@ -98,19 +99,13 @@ export default class ComponentDemo extends BaseComponent {
   }
 
   /**
-   * 初始化 cicd配置文件
+   * 初始化CI/CD配置文件
    * @param inputs
    * @returns
    */
   public async cicd() {
-    const cicdPlatform: any = await inquirer.prompt([{ type: 'list', name: 'platform', 'message': '选择部署平台', choices: [{ name: 'github', value: 'github' }, { name: 'gitlab', value: 'gitlab' }] }]);
-    switch (cicdPlatform.platform) {
-      case 'github':
-        this.initGitHub();
-        break;
-      default:
-        break;
-    }
+    const cicdInstance = await core.loadComponent('devsapp/cicd')
+    await cicdInstance.index({})
   }
 
   private addService(originTree, newNode) {
@@ -133,7 +128,7 @@ export default class ComponentDemo extends BaseComponent {
 
   /**
    * 初始化|增加api配置
-   * @param 
+   * @param
    * @returns
    */
   public async api() {
