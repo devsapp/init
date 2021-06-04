@@ -5,6 +5,9 @@ vars: # [全局变量，提供给各个服务使用]
   domain: xxxx.yyy.com
 services:
   component-test: #  服务名称
+    actions:
+      pre-deploy:
+        run: npm i
     component: ${path(..)}  # 这里引入的是相对路径，正式配置替换成你自己的component名称即可 
     props:
       name: ${component-test2.props.name}
