@@ -10,7 +10,6 @@ export default class ComponentDemo extends BaseComponent {
     private replaceFun;
     private createS;
     private init;
-    private initGitHub;
     /**
      * 初始化站点默认是静态站点
      * @param
@@ -24,7 +23,7 @@ export default class ComponentDemo extends BaseComponent {
      */
     staticSite(): Promise<any>;
     /**
-     * 初始化 cicd配置文件
+     * 初始化CI/CD配置文件
      * @param inputs
      * @returns
      */

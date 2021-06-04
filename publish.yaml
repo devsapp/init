@@ -2,8 +2,8 @@ Type: Component
 Name: init
 Provider:
   - 其它
-Version: 0.0.13
-Description: 初始化component模板
+Version: 0.0.14
+Description: Serverless Devs项目初始化辅助工具
 HomePage: https://www.serverless-devs.com
 Tags: #标签详情
   - 模板
