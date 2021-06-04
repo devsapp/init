@@ -1,6 +1,6 @@
 {
   "name": "init",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Serverless Devs项目初始化辅助工具",
   "keywords": [
     "Serverless",
