@@ -1,12 +1,12 @@
 
-const { http } = require('@serverless-devs/dk');
+const { dk } = require('@serverless-devs/dk');
 
-const handler = http.onRequest({
-  handler: (request) => {
-    return {
-      json: { result: 'this is api demo' },
-    };
-  },
-});
+const handler = dk((ctx) => {
+  // ctx 包含 ctx.req 可获取入参信息
+  return {
+    json: { title: 'hello serverless devs' },
+  }
+})
 
 exports.handler = handler;
+

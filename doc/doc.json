@@ -192,7 +192,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 120,
+							"line": 111,
 							"character": 20
 						}
 					],
@@ -245,7 +245,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 129,
+							"line": 120,
 							"character": 21
 						}
 					],
@@ -298,7 +298,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 143,
+							"line": 134,
 							"character": 18
 						}
 					],
@@ -349,7 +349,7 @@
 							"kindString": "Call signature",
 							"flags": {},
 							"comment": {
-								"shortText": "初始化 cicd配置文件",
+								"shortText": "初始化CI/CD配置文件",
 								"returns": "\n"
 							},
 							"type": {
