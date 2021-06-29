@@ -1,6 +1,6 @@
 region: cn-hangzhou
 app:
-  name: api
+  name: rest-api
   # 可选服务配置 'logConfig', 'vpcConfig', 'nasConfig', 'role'
   # 可选函数配置
   # runtime: string # 默认：nodejs12,
