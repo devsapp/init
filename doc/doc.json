@@ -56,7 +56,7 @@
 					}
 				},
 				{
-					"id": 10,
+					"id": 16,
 					"name": "client",
 					"kind": 1024,
 					"kindString": "Property",
@@ -80,7 +80,7 @@
 					}
 				},
 				{
-					"id": 11,
+					"id": 17,
 					"name": "inputs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -97,7 +97,7 @@
 					}
 				},
 				{
-					"id": 14,
+					"id": 20,
 					"name": "__doc",
 					"kind": 2048,
 					"kindString": "Method",
@@ -111,14 +111,14 @@
 					],
 					"signatures": [
 						{
-							"id": 15,
+							"id": 21,
 							"name": "__doc",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 16,
+									"id": 22,
 									"name": "projectName",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -147,7 +147,7 @@
 					}
 				},
 				{
-					"id": 12,
+					"id": 18,
 					"name": "__getBasePath",
 					"kind": 2048,
 					"kindString": "Method",
@@ -161,7 +161,7 @@
 					],
 					"signatures": [
 						{
-							"id": 13,
+							"id": 19,
 							"name": "__getBasePath",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -182,8 +182,8 @@
 					}
 				},
 				{
-					"id": 5,
-					"name": "test",
+					"id": 14,
+					"name": "api",
 					"kind": 2048,
 					"kindString": "Method",
 					"flags": {
@@ -192,32 +192,118 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 14,
-							"character": 19
+							"line": 104,
+							"character": 18
 						}
 					],
 					"signatures": [
 						{
-							"id": 6,
-							"name": "test",
+							"id": 15,
+							"name": "api",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
-							"comment": {
-								"shortText": "demo 实例",
-								"returns": "\n"
-							},
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
+					"id": 7,
+					"name": "checkRoute",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPrivate": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 28,
+							"character": 20
+						}
+					],
+					"signatures": [
+						{
+							"id": 8,
+							"name": "checkRoute",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
 							"parameters": [
 								{
-									"id": 7,
-									"name": "inputs",
+									"id": 9,
+									"name": "route",
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {},
-									"comment": {},
 									"type": {
-										"type": "reference",
-										"name": "InputProps"
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									}
+								},
+								{
+									"id": 10,
+									"name": "name",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "any"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "boolean"
+							}
+						}
+					]
+				},
+				{
+					"id": 11,
+					"name": "existedSymlApi",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPrivate": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 36,
+							"character": 30
+						}
+					],
+					"signatures": [
+						{
+							"id": 12,
+							"name": "existedSymlApi",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"parameters": [
+								{
+									"id": 13,
+									"name": "spath",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {},
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
 									}
 								}
 							],
@@ -225,40 +311,40 @@
 								"type": "reference",
 								"typeArguments": [
 									{
-										"type": "reflection",
-										"declaration": {
-											"id": 8,
-											"name": "__type",
-											"kind": 65536,
-											"kindString": "Type literal",
-											"flags": {},
-											"children": [
-												{
-													"id": 9,
-													"name": "hello",
-													"kind": 1024,
-													"kindString": "Property",
-													"flags": {},
-													"type": {
-														"type": "intrinsic",
-														"name": "string"
-													},
-													"defaultValue": "'hanxie'"
-												}
-											],
-											"groups": [
-												{
-													"title": "Properties",
-													"kind": 1024,
-													"children": [
-														9
-													]
-												}
-											]
-										}
+										"type": "intrinsic",
+										"name": "void"
 									}
 								],
 								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
+					"id": 5,
+					"name": "getSpath",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPrivate": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 17,
+							"character": 18
+						}
+					],
+					"signatures": [
+						{
+							"id": 6,
+							"name": "getSpath",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
 							}
 						}
 					]
@@ -276,16 +362,19 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						10,
-						11
+						16,
+						17
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
+						20,
+						18,
 						14,
-						12,
+						7,
+						11,
 						5
 					]
 				}
@@ -293,7 +382,7 @@
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 5,
+					"line": 12,
 					"character": 34
 				}
 			],
