@@ -2,7 +2,7 @@ import BaseComponent from './common/base';
 import path from 'path';
 import fs from 'fs-extra';
 import inquirer from 'inquirer';
-import { parseDocument, createNode, parse } from 'yaml';
+import { parseDocument, createNode, parse, stringify } from 'yaml';
 import { Pair, Scalar } from 'yaml/types';
 import get from 'lodash.get';
 import { Logger } from '@serverless-devs/core';
@@ -28,7 +28,7 @@ export default class ComponentDemo extends BaseComponent {
   private checkRoute(route: string[], name) {
     const opt = route.filter((item) => item === name);
     if (opt.length > 0) {
-      logger.warn(`${name}函数已存在，请重新创建。`);
+      logger.warn(`${name} 函数已存在，请重新创建。`);
       return true;
     }
     return false;
@@ -105,10 +105,40 @@ export default class ComponentDemo extends BaseComponent {
     fs.ensureDirSync(routePath);
     fs.writeFileSync(path.join(routePath, 'index.js'), indexTemplate);
   }
+  private async noExistedSymlApi() {
+    const apiMain: any = await inquirer.prompt([
+      { type: 'input', name: 'sourceCode', message: '请输入部署函数的目录', default: 'functions' },
+      { type: 'input', name: 'route', message: '请输入部署的函数名称' },
+    ]);
+    const content = {
+      edition: '1.0.0',
+      name: 'appName',
+      services: {
+        'start-function': {
+          component: 'jamstack-api',
+          actions: {
+            'pre-deploy': [
+              {
+                run: 'npm i',
+                path: apiMain.sourceCode,
+              },
+            ],
+          },
+          props: {
+            sourceCode: apiMain.sourceCode,
+            route: [apiMain.route],
+          },
+        },
+      },
+    };
+    fs.writeFileSync(path.join(process.cwd(), 's.yaml'), stringify(content));
+    this.genarateFile(apiMain);
+  }
   public async api() {
     const spath = this.getSpath();
     if (spath) {
-      await this.existedSymlApi(spath);
+      return await this.existedSymlApi(spath);
     }
+    await this.noExistedSymlApi();
   }
 }

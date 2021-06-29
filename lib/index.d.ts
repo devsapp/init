@@ -5,5 +5,6 @@ export default class ComponentDemo extends BaseComponent {
     private checkRoute;
     private existedSymlApi;
     private genarateFile;
+    private noExistedSymlApi;
     api(): Promise<void>;
 }

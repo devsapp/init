@@ -19,6 +19,5 @@ services:
     props:
       sourceCode: functions
       route:
-        - /index
         - /a
         - /b
