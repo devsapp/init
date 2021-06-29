@@ -10,14 +10,3 @@ services:
       name: ${component-test2.props.name}
       otherInput: ${component-test2.output.hello}
       envshow: ${env(USER)}
-  start-function:
-    component: jamstack-api
-    actions:
-      pre-deploy:
-        - run: npm i
-          path: functions
-    props:
-      sourceCode: functions
-      route:
-        - /a
-        - /b

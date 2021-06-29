@@ -38,16 +38,16 @@ export default class ComponentDemo extends BaseComponent {
     const sparse = parse(content);
     const sdocument: any = parseDocument(content);
 
-    const useJamstackApi = get(sparse, ['services', 'start-function', 'component'], '').endsWith('jamstack-api');
+    const useJamstackApi = get(sparse, ['services', 'api', 'component'], '').endsWith('jamstack-api');
     if (useJamstackApi) {
-      const sourceCode: string = get(sparse, ['services', 'start-function', 'props', 'sourceCode']);
-      const route: string[] = get(sparse, ['services', 'start-function', 'props', 'route']);
+      const sourceCode: string = get(sparse, ['services', 'api', 'props', 'sourceCode']);
+      const route: string[] = get(sparse, ['services', 'api', 'props', 'route']);
       const apiMain: any = await inquirer.prompt([{ type: 'input', name: 'route', message: '请输入部署的函数名称' }]);
       if (this.checkRoute(route, apiMain.route)) return;
       sdocument.contents.items.forEach((item) => {
         if (item.key.value === 'services') {
           item.value.items.forEach((child) => {
-            if (child.key.value === 'start-function') {
+            if (child.key.value === 'api') {
               child.value.items.forEach((pair) => {
                 if (pair.key.value === 'props') {
                   pair.value.items.forEach((obj) => {
@@ -84,7 +84,7 @@ export default class ComponentDemo extends BaseComponent {
         route: [apiMain.route],
       },
     });
-    const newPair = new Pair('start-function', node);
+    const newPair = new Pair('api', node);
     sdocument.contents.items.forEach((item) => {
       if (item.key.value === 'services') {
         item.value.items.push(newPair);
@@ -114,7 +114,7 @@ export default class ComponentDemo extends BaseComponent {
       edition: '1.0.0',
       name: 'appName',
       services: {
-        'start-function': {
+        api: {
           component: 'jamstack-api',
           actions: {
             'pre-deploy': [
