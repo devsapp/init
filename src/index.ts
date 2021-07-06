@@ -4,9 +4,7 @@ import fs from 'fs-extra';
 import inquirer from 'inquirer';
 import { parseDocument, createNode, parse, stringify } from 'yaml';
 import { Pair, Scalar } from 'yaml/types';
-import { Logger } from '@serverless-devs/core';
-
-const logger = new Logger('Init');
+import logger from './common/logger';
 
 export default class ComponentDemo extends BaseComponent {
   constructor(props) {
@@ -25,9 +23,14 @@ export default class ComponentDemo extends BaseComponent {
     }
   }
   private checkRoute(route: string[], name) {
-    const opt = route.filter((item) => item === name);
+    const opt = route.filter((item) => {
+      if (name === '/' || name === '/index') {
+        return item === '/' || item === '/index';
+      }
+      return item === name;
+    });
     if (opt.length > 0) {
-      logger.warn(`${name} 函数已存在，请重新创建。`);
+      logger.warn(`${name} 路由已存在，请重新创建。`);
       return true;
     }
     return false;
@@ -46,6 +49,56 @@ export default class ComponentDemo extends BaseComponent {
     return { useJamstackApi, apiProps, appName };
   }
 
+  private checkUseWebsite(sparse: any) {
+    let useWebsite = false;
+    for (const key in sparse.services) {
+      if (sparse.services[key].component.endsWith('website')) {
+        useWebsite = true;
+      }
+    }
+    return { useWebsite };
+  }
+
+  private formatWebsite(sdocument: any, apiMain) {
+    sdocument.contents.items.forEach((item) => {
+      if (item.key.value === 'services') {
+        item.value.items.forEach((child) => {
+          child.value.items.forEach((pair) => {
+            if (pair.key.value === 'props') {
+              pair.value.items.push(new Pair('customDomain', '${rest-api.output.customDomain}'));
+              pair.value.items.push(new Pair('project', apiMain.project));
+            }
+          });
+        });
+      }
+    });
+  }
+
+  private formatJamstackApi(sdocument: any, apiMain) {
+    const node = createNode({
+      component: 'devsapp/jamstack-api',
+      actions: {
+        'pre-deploy': [
+          {
+            run: 'npm i',
+            path: apiMain.sourceCode,
+          },
+        ],
+      },
+      props: {
+        region: 'cn-hangzhou',
+        sourceCode: apiMain.sourceCode,
+        route: [apiMain.route],
+      },
+    });
+    const newPair = new Pair('rest-api', node);
+    sdocument.contents.items.forEach((item) => {
+      if (item.key.value === 'services') {
+        item.value.items.push(newPair);
+      }
+    });
+  }
+
   private async existedSymlApi(spath: string) {
     const content = fs.readFileSync(spath, 'utf-8');
     const sparse = parse(content);
@@ -53,7 +106,7 @@ export default class ComponentDemo extends BaseComponent {
     const { useJamstackApi, apiProps, appName } = this.checkUseJamstackApi(sparse);
 
     if (useJamstackApi) {
-      const apiMain: any = await inquirer.prompt([{ type: 'input', name: 'route', message: '请输入部署的函数名称' }]);
+      const apiMain: any = await inquirer.prompt([{ type: 'input', name: 'route', message: '请输入路由名称' }]);
       if (this.checkRoute(apiProps.route, apiMain.route)) return;
       sdocument.contents.items.forEach((item) => {
         if (item.key.value === 'services') {
@@ -76,38 +129,24 @@ export default class ComponentDemo extends BaseComponent {
       return this.genarateFile({ sourceCode: apiProps.sourceCode, route: apiMain.route }, useJamstackApi);
     }
 
-    const apiMain: any = await inquirer.prompt([
+    let promptConfig = [
       { type: 'input', name: 'sourceCode', message: '请输入部署函数的路径', default: 'functions' },
-      { type: 'input', name: 'route', message: '请输入部署的函数名称' },
-    ]);
-    const node = createNode({
-      component: 'jamstack-api',
-      actions: {
-        'pre-deploy': [
-          {
-            run: 'npm i',
-            path: apiMain.sourceCode,
-          },
-        ],
-      },
-      props: {
-        sourceCode: apiMain.sourceCode,
-        route: [apiMain.route],
-      },
-    });
-    const newPair = new Pair('rest-api', node);
-    sdocument.contents.items.forEach((item) => {
-      if (item.key.value === 'services') {
-        item.value.items.push(newPair);
-      }
-    });
+      { type: 'input', name: 'route', message: '请输入路由名称' },
+    ];
+    const { useWebsite } = this.checkUseWebsite(sparse);
+    if (useWebsite) {
+      promptConfig = [{ type: 'input', name: 'project', message: '请输入应用名称' }].concat(promptConfig);
+    }
+    const apiMain: any = await inquirer.prompt(promptConfig);
+    useWebsite && this.formatWebsite(sdocument, apiMain);
+    this.formatJamstackApi(sdocument, apiMain);
     fs.writeFileSync(spath, String(sdocument));
     this.genarateFile(apiMain);
   }
   private genarateFile({ sourceCode, route }, useJamstackApi?: boolean) {
     const currentPath = process.cwd();
     const sourceCodePath = path.join(currentPath, sourceCode);
-    const routePath = path.join(sourceCodePath, route);
+    const routePath = path.join(sourceCodePath, route === '/' ? '/index' : route);
     const templatesPath = path.join(__dirname, '../templates');
     const indexTemplate = fs.readFileSync(path.join(templatesPath, 'index-template.js'), 'utf8');
     if (!useJamstackApi) {
@@ -119,14 +158,14 @@ export default class ComponentDemo extends BaseComponent {
   private async noExistedSymlApi() {
     const apiMain: any = await inquirer.prompt([
       { type: 'input', name: 'sourceCode', message: '请输入部署函数的路径', default: 'functions' },
-      { type: 'input', name: 'route', message: '请输入部署的函数名称' },
+      { type: 'input', name: 'route', message: '请输入路由名称' },
     ]);
     const content = {
       edition: '1.0.0',
       name: 'appName',
       services: {
         'rest-api': {
-          component: 'jamstack-api',
+          component: 'devsapp/jamstack-api',
           actions: {
             'pre-deploy': [
               {
@@ -136,6 +175,7 @@ export default class ComponentDemo extends BaseComponent {
             ],
           },
           props: {
+            region: 'cn-hangzhou',
             sourceCode: apiMain.sourceCode,
             route: [apiMain.route],
           },
@@ -146,6 +186,8 @@ export default class ComponentDemo extends BaseComponent {
     this.genarateFile(apiMain);
   }
   public async api() {
+    console.log('本地init组件');
+
     const spath = this.getSpath();
     if (spath) {
       return await this.existedSymlApi(spath);

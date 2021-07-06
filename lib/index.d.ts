@@ -4,6 +4,9 @@ export default class ComponentDemo extends BaseComponent {
     private getSpath;
     private checkRoute;
     private checkUseJamstackApi;
+    private checkUseWebsite;
+    private formatWebsite;
+    private formatJamstackApi;
     private existedSymlApi;
     private genarateFile;
     private noExistedSymlApi;
