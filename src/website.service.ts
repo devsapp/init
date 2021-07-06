@@ -17,6 +17,7 @@ class Website {
           publishDir: './website-base',
           index: 'index.html',
         },
+        region: 'cn-hangzhou',
         hosts: [{ host: 'auto' }],
       },
     });

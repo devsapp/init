@@ -5,7 +5,6 @@ import * as utils from './common/utils';
 
 export default class ComponentDemo extends BaseComponent {
   constructor(props) {
-    console.log('本地init组件');
     super(props);
   }
   public async api() {
