@@ -1,5 +1,6 @@
 declare class Api {
     private checkRoute;
+    private formatRoute;
     private formatWebsite;
     private formatJamstackApi;
     existedSymlApi(spath: string): Promise<void>;

@@ -4,9 +4,7 @@ import inquirer from 'inquirer';
 import { parseDocument, createNode, parse } from 'yaml';
 import { Pair } from 'yaml/types';
 import * as utils from './common/utils';
-import logger from './common/logger';
-import { colors } from '@serverless-devs/core';
-
+import { spawnSync } from 'child_process';
 class Website {
   private formatWebsite(sdocument: any, apiMain) {
     const node = createNode({
@@ -77,11 +75,7 @@ class Website {
   }
 
   public async noExistedSyml() {
-    logger.warn(
-      `检测到${process.cwd()}路径下不存在s.[yml|yaml]文件，可在终端执行 s init devsapp/website-base，具体可前往 ${colors.cyan.underline(
-        'https://github.com/devsapp/website-example',
-      )} 查看`,
-    );
+    spawnSync('s init devsapp/website-base', { shell: true, stdio: 'inherit' });
   }
 }
 

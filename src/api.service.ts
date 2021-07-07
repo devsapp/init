@@ -21,6 +21,9 @@ class Api {
     }
     return false;
   }
+  private formatRoute(route: string) {
+    return path.join('/', route);
+  }
   private formatWebsite(sdocument: any, apiMain) {
     let useWebsite = false;
     for (const item of sdocument.contents.items) {
@@ -74,6 +77,7 @@ class Api {
 
     if (useJamstackApi) {
       const apiMain: any = await inquirer.prompt([{ type: 'input', name: 'route', message: '请输入路由名称' }]);
+      apiMain.route = this.formatRoute(apiMain.route);
       if (this.checkRoute(apiProps.route, apiMain.route)) return;
       sdocument.contents.items.forEach((item) => {
         if (item.key.value === 'services') {
@@ -105,6 +109,7 @@ class Api {
       promptConfig = [{ type: 'input', name: 'project', message: '请输入应用名称' }].concat(promptConfig);
     }
     const apiMain: any = await inquirer.prompt(promptConfig);
+    apiMain.route = this.formatRoute(apiMain.route);
     useWebsite && this.formatWebsite(sdocument, apiMain);
     this.formatJamstackApi(sdocument, apiMain);
     fs.writeFileSync(spath, String(sdocument));
@@ -146,7 +151,7 @@ class Api {
           props: {
             region: 'cn-hangzhou',
             sourceCode: apiMain.sourceCode,
-            route: [apiMain.route],
+            route: [this.formatRoute(apiMain.route)],
           },
         },
       },
