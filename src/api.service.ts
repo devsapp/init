@@ -57,6 +57,9 @@ class Api {
       },
       props: {
         region: 'cn-hangzhou',
+        app: {
+          name: 'rest-api-demo',
+        },
         sourceCode: apiMain.sourceCode,
         route: [apiMain.route],
       },
@@ -150,6 +153,9 @@ class Api {
           },
           props: {
             region: 'cn-hangzhou',
+            app: {
+              name: 'rest-api-demo',
+            },
             sourceCode: apiMain.sourceCode,
             route: [this.formatRoute(apiMain.route)],
           },

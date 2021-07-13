@@ -7,7 +7,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "server": "sandbox --projectName rest-api"
+    "serve": "sandbox --projectName rest-api"
   },
   "dependencies": {
     "@serverless-devs/dk": "latest"
