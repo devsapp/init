@@ -1,10 +1,12 @@
 Type: Component
 Name: init
-Provider:
-  - 其它
 Version: 0.0.24
-Description: Serverless Devs项目初始化辅助工具
-HomePage: https://www.serverless-devs.com
-Tags: #标签详情
+Category: 其他
+HomePage: 'https://www.serverless-devs.com'
+Tags:
   - 模板
-Category: 其它
+Description: Serverless Devs项目初始化辅助工具
+Commands:
+  api: 生产api模版
+  website: 生成website模版
+Properties: {}
