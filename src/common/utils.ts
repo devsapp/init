@@ -1,5 +1,3 @@
-import path from 'path';
-import fs from 'fs-extra';
 export function checkUseWebsite(sparse: any) {
   let useWebsite = false;
   for (const key in sparse.services) {
@@ -25,13 +23,5 @@ export function checkUseJamstackApi(sparse: any) {
 }
 
 export function getSpath() {
-  const currentPath = process.cwd();
-  const sYamlPath = path.join(currentPath, 's.yaml');
-  if (fs.existsSync(sYamlPath)) {
-    return sYamlPath;
-  }
-  const sYmlPath = path.join(currentPath, 's.yml');
-  if (fs.existsSync(sYmlPath)) {
-    return sYmlPath;
-  }
+  return process.env.templateFile === 'null' ? undefined : process.env.templateFile;
 }

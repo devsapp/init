@@ -1,6 +1,7 @@
 import BaseComponent from './common/base';
 import website from './website.service';
 import api from './api.service';
+import oss from './oss.service';
 import * as utils from './common/utils';
 
 export default class ComponentDemo extends BaseComponent {
@@ -21,5 +22,13 @@ export default class ComponentDemo extends BaseComponent {
       return await website.existedSyml(spath);
     }
     await website.noExistedSyml();
+  }
+
+  public async oss() {
+    const spath = utils.getSpath();
+    if (spath) {
+      return await oss.existedSyml(spath);
+    }
+    await oss.noExistedSyml();
   }
 }

@@ -75,7 +75,7 @@ class Website {
   }
 
   public async noExistedSyml() {
-    spawnSync('s init devsapp/website-base', { shell: true, stdio: 'inherit' });
+    spawnSync('s init devsapp/website-react', { shell: true, stdio: 'inherit' });
   }
 }
 
