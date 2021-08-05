@@ -56,7 +56,7 @@
 					}
 				},
 				{
-					"id": 9,
+					"id": 13,
 					"name": "client",
 					"kind": 1024,
 					"kindString": "Property",
@@ -80,7 +80,7 @@
 					}
 				},
 				{
-					"id": 10,
+					"id": 14,
 					"name": "inputs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -97,7 +97,7 @@
 					}
 				},
 				{
-					"id": 13,
+					"id": 17,
 					"name": "__doc",
 					"kind": 2048,
 					"kindString": "Method",
@@ -111,14 +111,14 @@
 					],
 					"signatures": [
 						{
-							"id": 14,
+							"id": 18,
 							"name": "__doc",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
 							"parameters": [
 								{
-									"id": 15,
+									"id": 19,
 									"name": "projectName",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -147,7 +147,7 @@
 					}
 				},
 				{
-					"id": 11,
+					"id": 15,
 					"name": "__getBasePath",
 					"kind": 2048,
 					"kindString": "Method",
@@ -161,7 +161,7 @@
 					],
 					"signatures": [
 						{
-							"id": 12,
+							"id": 16,
 							"name": "__getBasePath",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -192,7 +192,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 10,
+							"line": 11,
 							"character": 18
 						}
 					],
@@ -200,6 +200,76 @@
 						{
 							"id": 6,
 							"name": "api",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
+					"id": 9,
+					"name": "oss",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 27,
+							"character": 18
+						}
+					],
+					"signatures": [
+						{
+							"id": 10,
+							"name": "oss",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "void"
+									}
+								],
+								"name": "Promise"
+							}
+						}
+					]
+				},
+				{
+					"id": 11,
+					"name": "scheduler",
+					"kind": 2048,
+					"kindString": "Method",
+					"flags": {
+						"isPublic": true
+					},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 35,
+							"character": 24
+						}
+					],
+					"signatures": [
+						{
+							"id": 12,
+							"name": "scheduler",
 							"kind": 4096,
 							"kindString": "Call signature",
 							"flags": {},
@@ -227,7 +297,7 @@
 					"sources": [
 						{
 							"fileName": "index.ts",
-							"line": 18,
+							"line": 19,
 							"character": 22
 						}
 					],
@@ -264,17 +334,19 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						9,
-						10
+						13,
+						14
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						13,
-						11,
+						17,
+						15,
 						5,
+						9,
+						11,
 						7
 					]
 				}
@@ -282,7 +354,7 @@
 			"sources": [
 				{
 					"fileName": "index.ts",
-					"line": 6,
+					"line": 7,
 					"character": 34
 				}
 			],

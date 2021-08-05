@@ -125,7 +125,7 @@ class Api {
     const templatesPath = path.join(__dirname, '../templates');
     const indexTemplate = fs.readFileSync(path.join(templatesPath, 'index-template.js'), 'utf8');
     if (!useJamstackApi) {
-      fs.copySync(path.join(templatesPath, 'api-demo'), sourceCodePath);
+      fs.copySync(path.join(templatesPath, 'http'), sourceCodePath);
     }
     fs.ensureDirSync(routePath);
     fs.writeFileSync(path.join(routePath, 'index.js'), indexTemplate);

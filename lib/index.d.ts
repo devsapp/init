@@ -4,4 +4,5 @@ export default class ComponentDemo extends BaseComponent {
     api(): Promise<void>;
     website(): Promise<void>;
     oss(): Promise<void>;
+    scheduler(): Promise<void>;
 }

@@ -7,7 +7,15 @@ import logger from './common/logger';
 import { getCredential } from '@serverless-devs/core';
 import * as utils from './common/utils';
 
-class Oss {
+interface IConfig {
+  type: 'oss' | 'scheduler';
+}
+
+class NonHttp {
+  type: string;
+  constructor(config: IConfig) {
+    this.type = config.type;
+  }
   private checkRoute(route: string[], name) {
     const opt = route.filter((item) => {
       if (name === '/' || name === '/index') {
@@ -99,9 +107,9 @@ class Oss {
     const sourceCodePath = path.join(currentPath, sourceCode);
     const routePath = path.join(sourceCodePath, route === '/' ? '/index' : route);
     const templatesPath = path.join(__dirname, '../templates');
-    const indexTemplate = fs.readFileSync(path.join(templatesPath, 'index-oss.js'), 'utf8');
+    const indexTemplate = fs.readFileSync(path.join(templatesPath, `index-${this.type}.js`), 'utf8');
     if (!useJamstackApi) {
-      fs.copySync(path.join(templatesPath, 'oss-demo'), sourceCodePath);
+      fs.copySync(path.join(templatesPath, 'non-http'), sourceCodePath);
     }
     fs.ensureDirSync(routePath);
     fs.writeFileSync(path.join(routePath, 'index.js'), indexTemplate);
@@ -143,4 +151,4 @@ class Oss {
   }
 }
 
-export default new Oss();
+export default NonHttp;
