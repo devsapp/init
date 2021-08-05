@@ -12,14 +12,14 @@ class Website {
       props: {
         bucket: apiMain.bucket,
         src: {
-          publishDir: './website-base',
+          publishDir: './website-react',
           index: 'index.html',
         },
         region: 'cn-hangzhou',
         hosts: [{ host: 'auto' }],
       },
     });
-    const newPair = new Pair('website-base', node);
+    const newPair = new Pair('website-react', node);
     sdocument.contents.items.forEach((item) => {
       if (item.key.value === 'services') {
         item.value.items.push(newPair);
@@ -57,7 +57,7 @@ class Website {
         { type: 'confirm', name: 'reinit', message: '检测到您已经使用了website组件，是否需要对website进行初始化？', default: 'Y' },
       ]);
       if (!reinit) {
-        return fs.copySync(path.join(templatesPath, 'website-base'), path.join(process.cwd(), 'website-base'));
+        return fs.copySync(path.join(templatesPath, 'website-react'), path.join(process.cwd(), 'website-react'));
       }
     }
 
@@ -71,7 +71,7 @@ class Website {
       this.formatJamstackApi(sdocument, apiMain);
       fs.writeFileSync(spath, String(sdocument));
     }
-    fs.copySync(path.join(templatesPath, 'website-base'), path.join(process.cwd(), 'website-base'));
+    fs.copySync(path.join(templatesPath, 'website-react'), path.join(process.cwd(), 'website-react'));
   }
 
   public async noExistedSyml() {
